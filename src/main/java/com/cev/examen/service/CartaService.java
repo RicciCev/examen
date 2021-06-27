@@ -30,6 +30,9 @@ public interface CartaService {
      * @return the list of entities.
      */
     List<Carta> findAll();
+    
+    // CONSULTAS JPA.
+    List<Carta> busarPorJugador(String jugador);
 
     /**
      * Get the "id" carta.

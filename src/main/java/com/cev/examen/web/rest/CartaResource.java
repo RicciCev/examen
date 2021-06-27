@@ -188,4 +188,12 @@ public class CartaResource {
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString()))
             .build();
     }
+    
+    // CONSULTAS JPA.
+    @GetMapping("/cartas-jugador/{jugador}")
+    public ResponseEntity<List<Carta>> getAllCartas(@PathVariable("jugador") String jugador) {
+        log.debug("Buscando listado de cartas por : {}", jugador);
+        List<Carta> entityList = cartaService.busarPorJugador(jugador);
+        return ResponseEntity.ok().body(entityList);
+    }
 }

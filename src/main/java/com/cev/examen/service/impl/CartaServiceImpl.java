@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.ArrayList;
 
 /**
  * Service Implementation for managing {@link Carta}.
@@ -76,5 +77,10 @@ public class CartaServiceImpl implements CartaService {
     public void delete(Long id) {
         log.debug("Request to delete Carta : {}", id);
         cartaRepository.deleteById(id);
+    }
+    
+    // CONSULTAS JPA.
+    public List<Carta> busarPorJugador(String jugador) {
+    	return this.cartaRepository.findAllByJugadores_Apodo(jugador).orElse(new ArrayList<>());
     }
 }
