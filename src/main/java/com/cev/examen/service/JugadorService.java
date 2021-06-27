@@ -32,6 +32,9 @@ public interface JugadorService {
      * @return the list of entities.
      */
     List<Jugador> findAll();
+    
+    // CONSULTAS JPA.
+    List<Jugador> busarPorCarta(Integer idCarta);
 
     /**
      * Get all the jugadors with eager load of many-to-many relationships.

@@ -25,4 +25,6 @@ public interface JugadorRepository extends JpaRepository<Jugador, Long>, JpaSpec
 
     @Query("select jugador from Jugador jugador left join fetch jugador.cartas where jugador.id =:id")
     Optional<Jugador> findOneWithEagerRelationships(@Param("id") Long id);
+    
+    Optional<List<Jugador>> findAllByCartas_Id(Integer id);
 }

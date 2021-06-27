@@ -190,4 +190,12 @@ public class JugadorResource {
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString()))
             .build();
     }
+    
+    // CONSULTAS JPA.
+    @GetMapping("/jugadores-by-carta/{idCarta}")
+    public ResponseEntity<List<Jugador>> getAllJugadorsByCarta(@PathVariable("idCarta") Integer idCarta) {
+        log.debug("Buscando listado de jugadores por carta : {}", idCarta);
+        List<Jugador> entityList = jugadorService.busarPorCarta(idCarta);
+        return ResponseEntity.ok().body(entityList);
+    }
 }

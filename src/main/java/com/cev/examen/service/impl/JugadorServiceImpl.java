@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.ArrayList;
 
 /**
  * Service Implementation for managing {@link Jugador}.
@@ -82,5 +83,10 @@ public class JugadorServiceImpl implements JugadorService {
     public void delete(Long id) {
         log.debug("Request to delete Jugador : {}", id);
         jugadorRepository.deleteById(id);
+    }
+    
+    // CONSULTAS JPA.
+    public List<Jugador> busarPorCarta(Integer idCarta) {
+    	return this.jugadorRepository.findAllByCartas_Id(idCarta).orElse(new ArrayList<>());
     }
 }
