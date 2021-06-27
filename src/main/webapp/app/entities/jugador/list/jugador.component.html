@@ -1,0 +1,91 @@
+<div>
+  <h2 id="page-heading" data-cy="JugadorHeading">
+    <span>Jugadors</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-jugador"
+        [routerLink]="['/jugador/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Jugador </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="jugadors?.length === 0">
+    <span>No jugadors found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="jugadors && jugadors.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>ID</span></th>
+          <th scope="col"><span>Apodo</span></th>
+          <th scope="col"><span>Nombre</span></th>
+          <th scope="col"><span>Apellido</span></th>
+          <th scope="col"><span>Fecha Nacimiento</span></th>
+          <th scope="col"><span>Cartas</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let jugador of jugadors; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/jugador', jugador.id, 'view']">{{ jugador.id }}</a>
+          </td>
+          <td>{{ jugador.apodo }}</td>
+          <td>{{ jugador.nombre }}</td>
+          <td>{{ jugador.apellido }}</td>
+          <td>{{ jugador.fechaNacimiento | formatMediumDate }}</td>
+          <td>
+            <span *ngFor="let cartas of jugador.cartas; let last = last">
+              <a class="form-control-static" [routerLink]="['/carta', cartas.id, 'view']">{{ cartas.nombre }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/jugador', jugador.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/jugador', jugador.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(jugador)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

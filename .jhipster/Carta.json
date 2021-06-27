@@ -1,0 +1,37 @@
+{
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["unique"]
+    },
+    {
+      "fieldName": "tipo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "costeMana",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "texto",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipName": "jugadores",
+      "otherEntityName": "jugador",
+      "relationshipType": "many-to-many",
+      "ownerSide": false,
+      "otherEntityRelationshipName": "cartas"
+    }
+  ],
+  "service": "serviceImpl",
+  "dto": "no",
+  "jpaMetamodelFiltering": true,
+  "readOnly": false,
+  "pagination": "no",
+  "name": "Carta",
+  "changelogDate": "20210627112734"
+}

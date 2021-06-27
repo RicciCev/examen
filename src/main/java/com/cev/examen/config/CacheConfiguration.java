@@ -48,6 +48,10 @@ public class CacheConfiguration {
             createCache(cm, com.cev.examen.domain.User.class.getName());
             createCache(cm, com.cev.examen.domain.Authority.class.getName());
             createCache(cm, com.cev.examen.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.cev.examen.domain.Jugador.class.getName());
+            createCache(cm, com.cev.examen.domain.Carta.class.getName());
+            createCache(cm, com.cev.examen.domain.Jugador.class.getName() + ".cartas");
+            createCache(cm, com.cev.examen.domain.Carta.class.getName() + ".jugadores");
             // jhipster-needle-ehcache-add-entry
         };
     }

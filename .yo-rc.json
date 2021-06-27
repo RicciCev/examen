@@ -41,6 +41,8 @@
     "jwtSecretKey": "NDA4MDc1OGFiMzNlOTgwZWIwYTdkOTk3YWZlMDM3NmE1OWY5ZDhjZDliMzVhMWJkOTI2OGI2MjUwYTVkMzZhZjQyNWMzZWQwODg3ZTg4MTU5NGE3NmMzOGVhM2M1MDJiNjc0MTA2N2MwMjhlOWRlMjBlNDVlNWVkZjNkNGM5YzI=",
     "clientPackageManager": "npm",
     "clientThemeVariant": "",
-    "languages": ["en", "fr"]
+    "languages": ["en", "fr"],
+    "lastLiquibaseTimestamp": 1624793254000,
+    "entities": ["Jugador", "Carta"]
   }
 }

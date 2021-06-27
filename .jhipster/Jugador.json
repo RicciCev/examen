@@ -1,0 +1,39 @@
+{
+  "fields": [
+    {
+      "fieldName": "apodo",
+      "fieldType": "String",
+      "fieldValidateRules": ["unique", "pattern"],
+      "fieldValidateRulesPattern": "^[a-zA-Z0-9_]*$"
+    },
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "apellido",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fechaNacimiento",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipName": "cartas",
+      "otherEntityName": "carta",
+      "relationshipType": "many-to-many",
+      "otherEntityField": "nombre",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "jugadores"
+    }
+  ],
+  "service": "serviceImpl",
+  "dto": "no",
+  "jpaMetamodelFiltering": true,
+  "readOnly": false,
+  "pagination": "no",
+  "name": "Jugador",
+  "changelogDate": "20210627112309"
+}
